@@ -1,0 +1,329 @@
+{
+    "success": true,
+    "message": "Projects retrieved successfully",
+    "data": {
+        "RowCount": "80",
+        "Projects": [
+            {
+                "PROJECT_ID": "300001798225802",
+                "PROJECT_DISPLAY": "100001 : Offshore Renewables Substation (Fixed)"
+            },
+            {
+                "PROJECT_ID": "300000310697667",
+                "PROJECT_DISPLAY": "10222023_TESTCAP1 : 10222023_TESTCAP1"
+            },
+            {
+                "PROJECT_ID": "300001495228561",
+                "PROJECT_DISPLAY": "1032 : OAK_RETENTION_01"
+            },
+            {
+                "PROJECT_ID": "300001496161603",
+                "PROJECT_DISPLAY": "1033 : OAK Retention"
+            },
+            {
+                "PROJECT_ID": "300001514993839",
+                "PROJECT_DISPLAY": "1042 : 5555"
+            },
+            {
+                "PROJECT_ID": "300001515008925",
+                "PROJECT_DISPLAY": "1043 : Retention_Project"
+            },
+            {
+                "PROJECT_ID": "300001515348798",
+                "PROJECT_DISPLAY": "1044 : Construction AIA"
+            },
+            {
+                "PROJECT_ID": "300001515490810",
+                "PROJECT_DISPLAY": "1045 : AIA Construction II"
+            },
+            {
+                "PROJECT_ID": "300001690578686",
+                "PROJECT_DISPLAY": "1063 : Test18112024"
+            },
+            {
+                "PROJECT_ID": "300001550010024",
+                "PROJECT_DISPLAY": "1066 : Omaha Water Treatment Plant"
+            },
+            {
+                "PROJECT_ID": "300001572901009",
+                "PROJECT_DISPLAY": "1081 : Test Project1"
+            },
+            {
+                "PROJECT_ID": "300001572901026",
+                "PROJECT_DISPLAY": "1082 : Test2"
+            },
+            {
+                "PROJECT_ID": "300001572901176",
+                "PROJECT_DISPLAY": "1083 : Test1"
+            },
+            {
+                "PROJECT_ID": "300001572901413",
+                "PROJECT_DISPLAY": "1084 : Test3"
+            },
+            {
+                "PROJECT_ID": "300001583609792",
+                "PROJECT_DISPLAY": "1085 : 2110"
+            },
+            {
+                "PROJECT_ID": "300001800530617",
+                "PROJECT_DISPLAY": "2000 : Oak-Houston Metro Power Restoration"
+            },
+            {
+                "PROJECT_ID": "300001696342406",
+                "PROJECT_DISPLAY": "20003 : Demo Project 100325"
+            },
+            {
+                "PROJECT_ID": "300001696385693",
+                "PROJECT_DISPLAY": "20004 : OAK Demo Project"
+            },
+            {
+                "PROJECT_ID": "300001705438874",
+                "PROJECT_DISPLAY": "2032 : Contract Project 0705"
+            },
+            {
+                "PROJECT_ID": "300001705439399",
+                "PROJECT_DISPLAY": "2034 : test080525"
+            },
+            {
+                "PROJECT_ID": "300001705439513",
+                "PROJECT_DISPLAY": "2036 : test1234"
+            },
+            {
+                "PROJECT_ID": "300001744934742",
+                "PROJECT_DISPLAY": "2044 : Project Execution Testing"
+            },
+            {
+                "PROJECT_ID": "300001756680804",
+                "PROJECT_DISPLAY": "2045 : Centerpoint - Houston Metro Power Restoration"
+            },
+            {
+                "PROJECT_ID": "300001756681008",
+                "PROJECT_DISPLAY": "2046 : Lone Star State Natural Gas Pipeline"
+            },
+            {
+                "PROJECT_ID": "300001765911322",
+                "PROJECT_DISPLAY": "2067 : Inspection Project"
+            },
+            {
+                "PROJECT_ID": "300001766032852",
+                "PROJECT_DISPLAY": "2070 : High‑Voltage Transmission Tower Replacement Project"
+            },
+            {
+                "PROJECT_ID": "300001767217951",
+                "PROJECT_DISPLAY": "2071 : DEWA Pipe Clearance Rental Project"
+            },
+            {
+                "PROJECT_ID": "300001773222952",
+                "PROJECT_DISPLAY": "2114 : JSW Construction Inc"
+            },
+            {
+                "PROJECT_ID": "300001776579040",
+                "PROJECT_DISPLAY": "2122 : BlueWave Floating Production Storage and Offloading"
+            },
+            {
+                "PROJECT_ID": "300001776632066",
+                "PROJECT_DISPLAY": "2123 : JSW Ship Building"
+            },
+            {
+                "PROJECT_ID": "300001776632448",
+                "PROJECT_DISPLAY": "2124 : Zindal Shipbuilding"
+            },
+            {
+                "PROJECT_ID": "300001776637880",
+                "PROJECT_DISPLAY": "2125 : Demo Shipping Building"
+            },
+            {
+                "PROJECT_ID": "300001776638475",
+                "PROJECT_DISPLAY": "2126 : Ship Building Demo"
+            },
+            {
+                "PROJECT_ID": "300001776639837",
+                "PROJECT_DISPLAY": "2127 : L&T Ship Building"
+            },
+            {
+                "PROJECT_ID": "300001776658319",
+                "PROJECT_DISPLAY": "2128 : Test_hpv"
+            },
+            {
+                "PROJECT_ID": "300001779370949",
+                "PROJECT_DISPLAY": "2129 : OAK_PWP Project"
+            },
+            {
+                "PROJECT_ID": "300001801534797",
+                "PROJECT_DISPLAY": "2801 : Board_Construction"
+            },
+            {
+                "PROJECT_ID": "300001801755900",
+                "PROJECT_DISPLAY": "2901 : Warehouse Construction"
+            },
+            {
+                "PROJECT_ID": "300001801755929",
+                "PROJECT_DISPLAY": "2902 : Administrative Services"
+            },
+            {
+                "PROJECT_ID": "300001800531122",
+                "PROJECT_DISPLAY": "5588 : OAK- Houston Metro Power"
+            },
+            {
+                "PROJECT_ID": "300000309120168",
+                "PROJECT_DISPLAY": "BURDEN1 : OAK_BURDEN_PROJECT"
+            },
+            {
+                "PROJECT_ID": "300001706126183",
+                "PROJECT_DISPLAY": "COPTWEU : Creation of Project Templates with Excel Utility"
+            },
+            {
+                "PROJECT_ID": "300001800539101",
+                "PROJECT_DISPLAY": "Crew_2301 : Building_Renovation"
+            },
+            {
+                "PROJECT_ID": "300001800539242",
+                "PROJECT_DISPLAY": "Crew_2302 : Shed_Renovation"
+            },
+            {
+                "PROJECT_ID": "300001696342290",
+                "PROJECT_DISPLAY": "Demo Project Template : Demo Project Template"
+            },
+            {
+                "PROJECT_ID": "300001706126200",
+                "PROJECT_DISPLAY": "EUPTC : Excel Utility Project Template Creation"
+            },
+            {
+                "PROJECT_ID": "300001444304541",
+                "PROJECT_DISPLAY": "EUPTU : Excel Utility Project Template Updation"
+            },
+            {
+                "PROJECT_ID": "300000313534806",
+                "PROJECT_DISPLAY": "OAK Fixed Bid : OAK Fixed Bid"
+            },
+            {
+                "PROJECT_ID": "300001699195770",
+                "PROJECT_DISPLAY": "OAK PPM Project Template : OAK PPM Project Template"
+            },
+            {
+                "PROJECT_ID": "300000313770945",
+                "PROJECT_DISPLAY": "OAK1003 : OAK_PERCENT_COMPLETE"
+            },
+            {
+                "PROJECT_ID": "300000313770963",
+                "PROJECT_DISPLAY": "OAK1004 : OAK_PERCENT_SPENT"
+            },
+            {
+                "PROJECT_ID": "300000313770981",
+                "PROJECT_DISPLAY": "OAK1005 : OAK_RATE_BASED"
+            },
+            {
+                "PROJECT_ID": "300000313978017",
+                "PROJECT_DISPLAY": "OAK1006 : OAK_BUDGET_PROJECT"
+            },
+            {
+                "PROJECT_ID": "300001801351288",
+                "PROJECT_DISPLAY": "OAK_2801 : OAK_Building Renovation"
+            },
+            {
+                "PROJECT_ID": "300001801351322",
+                "PROJECT_DISPLAY": "OAK_2802 : OAK_Shed Construction"
+            },
+            {
+                "PROJECT_ID": "300000303726638",
+                "PROJECT_DISPLAY": "OAK_BILLING : OAK_BILLING"
+            },
+            {
+                "PROJECT_ID": "300000303726714",
+                "PROJECT_DISPLAY": "OAK_BILLING_V1 : OAK_BILLING_V1"
+            },
+            {
+                "PROJECT_ID": "300000309120137",
+                "PROJECT_DISPLAY": "OAK_BURDENING : OAK_BURDENING"
+            },
+            {
+                "PROJECT_ID": "300000308757992",
+                "PROJECT_DISPLAY": "OAK_CAP1 : OAK_CAP1"
+            },
+            {
+                "PROJECT_ID": "300000310419657",
+                "PROJECT_DISPLAY": "OAK_CAP123 : OAK_CAPITAL1"
+            },
+            {
+                "PROJECT_ID": "300000308758097",
+                "PROJECT_DISPLAY": "OAK_CAP2 : OAK_CAP2"
+            },
+            {
+                "PROJECT_ID": "300000303435660",
+                "PROJECT_DISPLAY": "OAK_CAPITAL : OAK_CAPITAL"
+            },
+            {
+                "PROJECT_ID": "300000310697764",
+                "PROJECT_DISPLAY": "OAK_CAPITAL_MERGE : OAK_CAPITAL_MERGE"
+            },
+            {
+                "PROJECT_ID": "300000311876926",
+                "PROJECT_DISPLAY": "OAK_CAP_SG_Y : OAK_CAP_SG_Y"
+            },
+            {
+                "PROJECT_ID": "300000311876956",
+                "PROJECT_DISPLAY": "OAK_CAP_Sup_Y : OAK_CAP_Sup_Y"
+            },
+            {
+                "PROJECT_ID": "300001776578647",
+                "PROJECT_DISPLAY": "OAK_DEMON_PROJ_TEMP : OAK Demonstration Project Template"
+            },
+            {
+                "PROJECT_ID": "300000311531094",
+                "PROJECT_DISPLAY": "OAK_EXP_TYPE_GROUP : OAK_EXP_TYPE_GROUP"
+            },
+            {
+                "PROJECT_ID": "300000311531115",
+                "PROJECT_DISPLAY": "OAK_EXP_TYPE_GROUPING : OAK_EXP_TYPE_GROUPING"
+            },
+            {
+                "PROJECT_ID": "300000311530600",
+                "PROJECT_DISPLAY": "OAK_GROUP : OAK_GROUP"
+            },
+            {
+                "PROJECT_ID": "300000311530913",
+                "PROJECT_DISPLAY": "OAK_GRP1 : OAK_GRP1"
+            },
+            {
+                "PROJECT_ID": "300000308757711",
+                "PROJECT_DISPLAY": "OAK_IND2 : OAK_IND2"
+            },
+            {
+                "PROJECT_ID": "300000303435611",
+                "PROJECT_DISPLAY": "OAK_INDIRECT : OAK_INDIRECT"
+            },
+            {
+                "PROJECT_ID": "300000308757690",
+                "PROJECT_DISPLAY": "OAK_INDIRECT1 : OAK_INDIR_PROJECT"
+            },
+            {
+                "PROJECT_ID": "300000310697804",
+                "PROJECT_DISPLAY": "OAK_MERGE : OAK_MERGE"
+            },
+            {
+                "PROJECT_ID": "300001697913008",
+                "PROJECT_DISPLAY": "P012025 : 1 Broad Street Project"
+            },
+            {
+                "PROJECT_ID": "300000642304957",
+                "PROJECT_DISPLAY": "RITE12 : OAK_EXPENSES"
+            },
+            {
+                "PROJECT_ID": "300001800531040",
+                "PROJECT_DISPLAY": "Restoration : OAK- Houston Metro Power R"
+            },
+            {
+                "PROJECT_ID": "300001706126382",
+                "PROJECT_DISPLAY": "TED : TEST for DELETE"
+            },
+            {
+                "PROJECT_ID": "300001697913031",
+                "PROJECT_DISPLAY": "Test dates : Test Dates"
+            },
+            {
+                "PROJECT_ID": "300000308687662",
+                "PROJECT_DISPLAY": "jkjkj : jkjkj"
+            }
+        ]
+    }
+}

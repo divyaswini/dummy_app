@@ -1,0 +1,214 @@
+{
+  "title": "Select Expenditure Items",
+  "description": "",
+  "variables": {
+    "currentPage": {
+  "type": "number",
+  "defaultValue": 1
+},
+"rowsPerPage": {
+  "type": "number",
+  "defaultValue": 15
+},
+"paginatedData": {
+  "type": "object[]",
+  "defaultValue": []
+},
+"isLoading": {
+  "type": "boolean",
+  "defaultValue": true
+},
+"skipSelectAll": {
+  "type": "boolean",
+  "defaultValue": true
+},
+    "filteredData": {
+  "type": "any[]",
+  "defaultValue": []
+},
+"filters": {
+  "type": "object",
+  "defaultValue": {
+    "contractNumber": "",
+    "expenditureItemId": "",
+    "apInvoiceNumber": "",
+    "expenditureItemDate": "",
+    "billableFlag": "",
+    "userTransactionSource": "",
+    "expenditureTypeName": "",
+    "taskNumber": "",
+    "taskName": "",
+    "projfuncRawCost": "",
+    "projectRawCost": "",
+    "projectBurdenedCost": "",
+    "attachmentFileName": "",
+    "attachmentEntity": "",
+    "source": "",
+    "quantity": "",
+    "dmDocumentId": ""
+  }
+},
+    "tableData": {
+      "type": "any[]",
+      "defaultValue": []
+    },
+    "ordsData": {
+      "type": "any[]",
+      "defaultValue": []
+    },
+    "selectedExpenditures": {
+      "type": "any[]",
+      "defaultValue": []
+    },
+    "selectAllArray": {
+      "type": "any[]",
+      "defaultValue": []
+    },
+    "projectDisplay": {
+      "type": "string",
+      "defaultValue": ""
+    }
+
+  },
+
+  "metadata": {},
+  "types": {},
+  "eventListeners": {
+"prevPage": {
+  "chains": [
+    {
+      "chain": "PaginationChain",
+      "parameters": {
+        "direction": "prev"
+      }
+    }
+  ]
+},
+"nextPage": {
+  "chains": [
+    {
+      "chain": "PaginationChain",
+      "parameters": {
+        "direction": "next"
+      }
+    }
+  ]
+},
+"firstPage": {
+  "chains": [
+    {
+      "chain": "PaginationChain",
+      "parameters": {
+        "direction": "first"
+      }
+    }
+  ]
+},
+"lastPage": {
+  "chains": [
+    {
+      "chain": "PaginationChain",
+      "parameters": {
+        "direction": "last"
+      }
+    }
+  ]
+},
+    "closeSuccessDialog": {
+  "chains": [
+    {
+      "chain": "CloseSuccessDialogChain"
+    }
+  ]
+},
+        "submitBackup": {
+  "chains": [
+    {
+      "chain": "SubmitBackupChain"
+    }
+  ]
+},
+    "filterChanged": {
+  "chains": [
+    {
+      "chain": "ApplyFiltersChain",
+      "parameters": {}
+    }
+  ]
+},
+    "buttonAction": {
+      "chains": [
+        {
+          "chain": "ButtonActionChain",
+          "parameters": {
+            "event": "{{$event}}",
+            "originalEvent": "{{$event.detail.originalEvent}}"
+          }
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chain": "SaveButtonActionChain",
+          "parameters": {}
+        }
+      ]
+    },
+    "selectAllChanged": {
+      "chains": [
+        {
+          "chain": "SelectAllChanged",
+          "parameters": {}
+        }
+      ]
+    },
+    "toggleRow": {
+      "chains": [
+        {
+          "chain": "ToggleRowChain",
+          "parameters": {
+            "rowIndex": "{{ $event.detail.rowIndex }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "LoadExpendituresOnEnter"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-checkboxset": {
+        "path": "ojs/ojcheckboxset"
+      },
+      "oj-dialog": {
+        "path": "ojs/ojdialog"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-input-text": {
+      "path": "ojs/ojinputtext"
+    },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-popup": {
+  "path": "ojs/ojpopup"
+},
+"oj-dialog": {
+  "path": "ojs/ojdialog"
+}
+
+    }
+  }
+}

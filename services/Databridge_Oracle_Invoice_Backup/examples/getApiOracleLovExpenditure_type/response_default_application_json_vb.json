@@ -1,0 +1,36 @@
+{
+    "success": true,
+    "message": "Expenditure types retrieved successfully",
+    "data": {
+        "Projects": [
+            {
+                "EXPENDITURE_TYPE_NAME": "OAK_CONTRACTORS",
+                "EXPENDITURE_TYPE_ID": "300000302543642"
+            },
+            {
+                "EXPENDITURE_TYPE_NAME": "OAK_MISC",
+                "EXPENDITURE_TYPE_ID": "300000302543634"
+            },
+            {
+                "EXPENDITURE_TYPE_NAME": "10001 - Specialty Modules",
+                "EXPENDITURE_TYPE_ID": "300001514994463"
+            },
+            {
+                "EXPENDITURE_TYPE_NAME": "OAK_PROFESS_CHARGES",
+                "EXPENDITURE_TYPE_ID": "300000302543635"
+            },
+            {
+                "EXPENDITURE_TYPE_NAME": "1005 Traffic Controls",
+                "EXPENDITURE_TYPE_ID": "300001514994538"
+            },
+            {
+                "EXPENDITURE_TYPE_NAME": "10002 Compartments",
+                "EXPENDITURE_TYPE_ID": "300001514994471"
+            },
+            {
+                "EXPENDITURE_TYPE_NAME": "11002 Small Tools",
+                "EXPENDITURE_TYPE_ID": "300001514994574"
+            }
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "success": true,
+    "message": "PPM contracts retrieved successfully",
+    "data": {
+        "RowCount": "2",
+        "Contracts": [
+            {
+                "contract_id": "300001515348843",
+                "contract_display": "AIA Construction : AIA Construction Contract"
+            },
+            {
+                "contract_id": "300001791812747",
+                "contract_display": "OAK-1044-2 : OAK-1044"
+            }
+        ]
+    }
+}

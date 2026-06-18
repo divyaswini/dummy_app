@@ -1,0 +1,66 @@
+{
+    "items": [
+        {
+            "sel_id": 3,
+            "project_id": 300001515348798,
+            "expenditure_item_id": 655728,
+            "project_number": "1044",
+            "project_name": "Construction AIA",
+            "contract_number": "AIA Construction",
+            "contract_line_num": "10",
+            "line_amount": 100000,
+            "invoiced_amount": 0,
+            "attribute_number5": null,
+            "ap_invoice_number": "IBS_MNL_INV_5",
+            "source": "Manual Invoice Entry",
+            "expenditure_item_date": "2025-12-31T00:00:00.000+00:00",
+            "expenditure_type_id": 300001514994471,
+            "bill_type_class_code": "RATE_BASED",
+            "billable_flag": "Y",
+            "user_transaction_source": "Oracle Fusion Payables",
+            "id_at_cntr_table": 300001515348843,
+            "expenditure_type_name": "10002 Compartments",
+            "description": "10002 Compartments",
+            "rec_id": 300001515348862,
+            "line_id": 300001515348863,
+            "line_puid": "KHDR-120022-LINE-67011",
+            "ap_invoice_id": 300001803310680,
+            "task_id": 100002710131343,
+            "quantity": 500,
+            "projfunc_raw_cost": 500,
+            "raw_cost_rate": 1,
+            "projfunc_burdened_cost": 500,
+            "burden_cost_rate": 1,
+            "invoiced_flag": "U",
+            "org_id": 300000301911646,
+            "project_unit_id": 300000301890955,
+            "project_raw_cost": 500,
+            "unit_of_measure": "DOLLARS",
+            "expenditure_organization_id": 300000301890664,
+            "project_burdened_cost": 500,
+            "created_date": "2026-02-12T21:45:09.860745Z"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://129.153.17.160:8080/ords/convertrite/convertrite/exp-selections?project_id=300001515348798"
+        },
+        {
+            "rel": "edit",
+            "href": "http://129.153.17.160:8080/ords/convertrite/convertrite/exp-selections?project_id=300001515348798"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://129.153.17.160:8080/ords/convertrite/metadata-catalog/convertrite/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://129.153.17.160:8080/ords/convertrite/convertrite/exp-selections?project_id=300001515348798"
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "backends": {
+        "databridge": {
+            "servers": [
+                {
+                    "url": "https://databridge.rite.digital",
+                    "description": "Databridge Rite Digital"
+                }
+            ]
+        },
+        "ORDS": {
+            "servers": [
+                {
+                    "url": "http://129.153.17.160:8080",
+                    "description": "Default Server"
+                }
+            ]
+        },
+        "exclusion_criteria": {
+            "servers": [
+                {
+                    "url": "http://129.213.71.15:5001",
+                    "description": "129.213.71.15"
+                }
+            ]
+        },
+        "ics": {
+            "description": "Integration Applications",
+            "serviceType": "ics",
+            "servers": [
+                {
+                    "url": "https://riteoicdev-idjm2yj32zav-ia.integration.us-ashburn-1.ocp.oraclecloud.com/ic/api/integration/v2/flows/rest",
+                    "description": "Default Server",
+                    "x-vb": {
+                        "authentication": {
+                            "authenticated": {
+                                "type": "basic",
+                                "credentials": "vb_cd5ac621-beda-4830-935f-3aa1c076e7be"
+                            },
+                            "anonymous": {
+                                "type": "basic",
+                                "credentials": "vb_15477c56-30f3-47dd-b267-ca0dc43db835"
+                            }
+                        },
+                        "profiles": [],
+                        "anonymousAccess": true
+                    }
+                }
+            ]
+        },
+         "OracleIntegration": {
+            "servers": [
+                {
+                    "url": "https://riteoicdev-idjm2yj32zav-ia.integration.us-ashburn-1.ocp.oraclecloud.com",
+                    "description": "Riteoicdev Idjm2yj32zav Ia Integration Us Ashburn 1 Ocp Oraclecloud Com",
+                    "x-vb": {
+                        "authentication": {
+                            "authenticated": {
+                                "type": "basic",
+                                "credentials": "vb_e63397d8-6c66-4f77-841e-f38787c473fa"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+      }
+}

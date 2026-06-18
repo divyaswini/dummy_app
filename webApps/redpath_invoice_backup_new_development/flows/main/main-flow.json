@@ -1,0 +1,41 @@
+{
+  "id": "main",
+  "description": "Flow main",
+  "defaultPage": "main-start",
+  "services": {},
+  "types": {},
+  "variables": {
+    "bu_id": {
+      "type": "string"
+    },
+    "contractname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "exp_from_date": {
+      "type": "string"
+    },
+    "exp_to_date": {
+      "type": "string"
+    },
+    "expenditure_type_name": {
+      "type": "string"
+    },
+    "navigate": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "project": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "user_transaction_source": {
+      "type": "string"
+    }
+
+  }
+}

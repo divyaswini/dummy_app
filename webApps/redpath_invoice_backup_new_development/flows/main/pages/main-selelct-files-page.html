@@ -1,0 +1,173 @@
+<style>
+  .filter-popup .oj-inputtext-input { font-size:11px !important; height:28px !important; width:160px !important; }
+  .filter-popup .oj-text-field-container { min-height:30px !important; }
+  .hdr-cell { padding:8px 8px; border-right:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; gap:4px; text-align:left; }
+  .hdr-cell span.search-icon { cursor:pointer; font-size:11px; color:rgba(255,255,255,0.5); margin-left:auto; flex-shrink:0; }
+  .hdr-cell span.search-icon:hover { color:#fff; }
+  .data-row:hover > div { background:#f5f7fa !important; }
+  .data-row > div { display:flex; align-items:center; transition: background 0.1s; }
+  .diff-red { background:#f8b4b4 !important; }
+  .cell-text { padding:7px 8px; border-right:1px solid #eee; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:left; }
+.cell-number { padding:7px 8px; border-right:1px solid #eee; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:right; justify-content:flex-end; font-variant-numeric:tabular-nums; }  #submitSuccessDialog .oj-dialog-header { display:none !important; }
+  #submitSuccessDialog .oj-dialog-body { padding:15px 0 0 0 !important; }
+  @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+</style>
+
+<div class="oj-flex oj-sm-padding-4x">
+  <div class="oj-flex-item oj-sm-12">
+
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+      <h3 class="oj-typography-heading-sm" style="margin:0;">Select Expenditure Items</h3>
+      <span style="font-size:14px; font-weight:bold; color:#fff; background:#4a4a4a; padding:6px 16px; border-radius:6px; letter-spacing:0.5px;">
+        <oj-bind-text value="[[ $page.variables.projectDisplay ]]"></oj-bind-text>
+      </span>
+    </div>
+
+    <oj-bind-if test="[[ $page.variables.isLoading ]]">
+      <div style="padding:30px; text-align:center; border:1px solid #ddd; border-radius:4px; background:#f9f9f9; margin-bottom:12px;">
+        <span style="font-size:14px; color:#555;">Loading expenditure data, please wait...</span>
+      </div>
+    </oj-bind-if>
+
+    <div id="tableScrollContainer" style="overflow:auto; max-height:560px; border:1px solid #d1d5db; border-radius:6px; position:relative; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+
+<!-- HEADER: Chk(36,sticky) | ExpSrc(160,sticky) | ExpType(180,sticky) | ExpDate(140,sticky) | Batch(150,sticky) || Task(90) | SysLink(120) | Billable(70) | Qty(80) | RawCost(110) | BurdenCost(110) | SupplierInv(160) | Attachment(220) | DMDocID(130) | ExpItemID(130) -->
+      <div style="display:grid; grid-template-columns:36px 160px 180px 140px 150px 90px 120px 70px 80px 110px 110px 160px 220px 130px 130px; min-width:1906px; background:#6b7280; color:#fff; font-size:11px; font-weight:600; position:sticky; top:0; z-index:10; letter-spacing:0.2px;">
+
+        <!-- Select All (sticky) -->
+        <div style="padding:8px 4px; border-right:1px solid rgba(255,255,255,0.15); text-align:center; position:sticky; left:0; z-index:12; background:#6b7280; cursor:pointer; display:flex; align-items:center; justify-content:center;"
+             on-click="[[ function() { var arr = $page.variables.selectedExpenditures; var all = $page.variables.filteredData; if (arr.length === all.length) { $page.variables.selectedExpenditures = []; $page.variables.selectAllArray = []; } else { var ids = []; for (var i = 0; i < all.length; i++) { ids.push(all[i]._rowIndex); } $page.variables.selectedExpenditures = ids; $page.variables.selectAllArray = ['all']; } } ]]">
+          <oj-bind-if test="[[ $page.variables.selectedExpenditures.length === $page.variables.filteredData.length && $page.variables.filteredData.length > 0 ]]">
+            <span style="font-size:16px; color:#fff;">&#9745;</span>
+          </oj-bind-if>
+          <oj-bind-if test="[[ $page.variables.selectedExpenditures.length !== $page.variables.filteredData.length || $page.variables.filteredData.length === 0 ]]">
+            <span style="font-size:16px; color:rgba(255,255,255,0.4);">&#9744;</span>
+          </oj-bind-if>
+        </div>
+
+        <div class="hdr-cell" style="position:sticky; left:36px; z-index:12; background:#6b7280;"><span>Expenditure Source</span><span class="search-icon" id="filter-btn-txnsrc" on-click="[[ function(){ document.getElementById('popup-txnsrc').open('#filter-btn-txnsrc'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell" style="position:sticky; left:196px; z-index:12; background:#6b7280;"><span>Expenditure Type</span><span class="search-icon" id="filter-btn-exptype" on-click="[[ function(){ document.getElementById('popup-exptype').open('#filter-btn-exptype'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell" style="position:sticky; left:376px; z-index:12; background:#6b7280;"><span>Expenditure Item Date</span><span class="search-icon" id="filter-btn-expdate" on-click="[[ function(){ document.getElementById('popup-expdate').open('#filter-btn-expdate'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell" style="border-right:2px solid rgba(255,255,255,0.3); position:sticky; left:516px; z-index:12; background:#6b7280;"><span>Batch Name</span><span class="search-icon" id="filter-btn-batch" on-click="[[ function(){ document.getElementById('popup-batch').open('#filter-btn-batch'); } ]]">&#128269;</span></div>
+
+        <div class="hdr-cell"><span>Task Number</span><span class="search-icon" id="filter-btn-tasknum" on-click="[[ function(){ document.getElementById('popup-tasknum').open('#filter-btn-tasknum'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell"><span>System Linkage</span><span class="search-icon" id="filter-btn-syslink" on-click="[[ function(){ document.getElementById('popup-syslink').open('#filter-btn-syslink'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell"><span>Billable</span><span class="search-icon" id="filter-btn-bill" on-click="[[ function(){ document.getElementById('popup-bill').open('#filter-btn-bill'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell"><span>Quantity</span><span class="search-icon" id="filter-btn-qty" on-click="[[ function(){ document.getElementById('popup-qty').open('#filter-btn-qty'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell" style="justify-content:flex-end;"><span>Raw Cost</span><span class="search-icon" id="filter-btn-rawcost" on-click="[[ function(){ document.getElementById('popup-rawcost').open('#filter-btn-rawcost'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell" style="justify-content:flex-end;"><span>Burdened Cost</span><span class="search-icon" id="filter-btn-burdencost" on-click="[[ function(){ document.getElementById('popup-burdencost').open('#filter-btn-burdencost'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell"><span>Supplier Invoice</span><span class="search-icon" id="filter-btn-apinv" on-click="[[ function(){ document.getElementById('popup-apinv').open('#filter-btn-apinv'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell"><span>Attachment File Name</span><span class="search-icon" id="filter-btn-attach" on-click="[[ function(){ document.getElementById('popup-attach').open('#filter-btn-attach'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell"><span>UCM ID</span><span class="search-icon" id="filter-btn-dmdocid" on-click="[[ function(){ document.getElementById('popup-dmdocid').open('#filter-btn-dmdocid'); } ]]">&#128269;</span></div>
+        <div class="hdr-cell" style="border-right:none;"><span>Expenditure Item ID</span><span class="search-icon" id="filter-btn-expid" on-click="[[ function(){ document.getElementById('popup-expid').open('#filter-btn-expid'); } ]]">&#128269;</span></div>
+      </div>
+
+      <!-- DATA ROWS -->
+<oj-bind-for-each data="[[$page.variables.paginatedData]]">
+          <template>
+          <div class="data-row" style="display:grid; grid-template-columns:36px 160px 180px 140px 150px 90px 120px 70px 80px 110px 110px 160px 220px 130px 130px; min-width:1906px; border-bottom:1px solid #e5e7eb; font-size:11px; background:#fff;">
+
+            <div style="padding:7px 4px; border-right:1px solid #eee; text-align:center; position:sticky; left:0; z-index:2; background:#fff; cursor:pointer;"
+                 :data-row-index="[[ $current.data._rowIndex ]]"
+                 on-click="[[ function(event) { var idx = event.currentTarget.getAttribute('data-row-index'); var arr = $page.variables.selectedExpenditures.slice(); var pos = arr.indexOf(idx); if (pos === -1) { arr.push(idx); } else { arr.splice(pos, 1); } $page.variables.selectedExpenditures = arr; } ]]">
+              <oj-bind-if test="[[ $page.variables.selectedExpenditures.indexOf($current.data._rowIndex) !== -1 ]]">
+                <span style="font-size:15px; color:#374151;">&#9745;</span>
+              </oj-bind-if>
+              <oj-bind-if test="[[ $page.variables.selectedExpenditures.indexOf($current.data._rowIndex) === -1 ]]">
+                <span style="font-size:15px; color:#bbb;">&#9744;</span>
+              </oj-bind-if>
+            </div>
+
+            <div :class="[[ 'cell-text' + ($current.data._diff_userTransactionSource ? ' diff-red' : '') ]]" style="position:sticky; left:36px; z-index:2; background:#fff;"><oj-bind-text value="[[ $current.data.userTransactionSource ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_expenditureTypeName ? ' diff-red' : '') ]]" style="position:sticky; left:196px; z-index:2; background:#fff;"><oj-bind-text value="[[ $current.data.expenditureTypeName ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_expenditureItemDate ? ' diff-red' : '') ]]" style="position:sticky; left:376px; z-index:2; background:#fff;"><oj-bind-text value="[[ $current.data.expenditureItemDate ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_userBatchName ? ' diff-red' : '') ]]" style="border-right:2px solid #d1d5db; position:sticky; left:516px; z-index:2; background:#fff;"><oj-bind-text value="[[ $current.data.userBatchName ]]"></oj-bind-text></div>
+
+            <div :class="[[ 'cell-text' + ($current.data._diff_taskNumber ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.taskNumber ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_systemLinkageFunction ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.systemLinkageFunction ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_billableFlag ? ' diff-red' : '') ]]" style="text-align:center;"><oj-bind-text value="[[ $current.data.billableFlag ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_quantity ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.quantity ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-number' + ($current.data._diff_projfuncRawCost ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.projfuncRawCost ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-number' + ($current.data._diff_projfuncBurdenedCost ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.projfuncBurdenedCost ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_apInvoiceNumber ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.apInvoiceNumber ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_attachmentFileName ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.attachmentFileName ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' + ($current.data._diff_dmDocumentId ? ' diff-red' : '') ]]"><oj-bind-text value="[[ $current.data.dmDocumentId ]]"></oj-bind-text></div>
+            <div :class="[[ 'cell-text' ]]" style="border-right:none;"><oj-bind-text value="[[ $current.data.expenditureItemId ]]"></oj-bind-text></div>
+          </div>
+        </template>
+      </oj-bind-for-each>
+    </div>
+    <!-- PAGINATION -->
+<div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding:8px 4px;">
+  <div style="font-size:12px; color:#555;">
+    Showing
+    <strong><oj-bind-text value="[[ Math.min((($page.variables.currentPage - 1) * $page.variables.rowsPerPage) + 1, $page.variables.filteredData.length) ]]"></oj-bind-text></strong>
+    –
+    <strong><oj-bind-text value="[[ Math.min($page.variables.currentPage * $page.variables.rowsPerPage, $page.variables.filteredData.length) ]]"></oj-bind-text></strong>
+    of
+    <strong><oj-bind-text value="[[ $page.variables.filteredData.length ]]"></oj-bind-text></strong> rows
+  </div>
+  <div style="display:flex; align-items:center; gap:4px;">
+    <oj-button chroming="outlined" on-click="[[$listeners.firstPage]]" disabled="[[ $page.variables.currentPage <= 1 ]]"
+      style="min-width:32px; padding:0 6px; font-size:11px;">&#171;</oj-button>
+    <oj-button chroming="outlined" on-click="[[$listeners.prevPage]]" disabled="[[ $page.variables.currentPage <= 1 ]]"
+      style="min-width:32px; padding:0 6px; font-size:11px;">&#8249;</oj-button>
+    <span style="font-size:12px; color:#333; padding:0 8px;">
+      Page <strong><oj-bind-text value="[[ $page.variables.currentPage ]]"></oj-bind-text></strong>
+      of <strong><oj-bind-text value="[[ Math.max(1, Math.ceil($page.variables.filteredData.length / $page.variables.rowsPerPage)) ]]"></oj-bind-text></strong>
+    </span>
+    <oj-button chroming="outlined" on-click="[[$listeners.nextPage]]" disabled="[[ $page.variables.currentPage >= Math.ceil($page.variables.filteredData.length / $page.variables.rowsPerPage) ]]"
+      style="min-width:32px; padding:0 6px; font-size:11px;">&#8250;</oj-button>
+    <oj-button chroming="outlined" on-click="[[$listeners.lastPage]]" disabled="[[ $page.variables.currentPage >= Math.ceil($page.variables.filteredData.length / $page.variables.rowsPerPage) ]]"
+      style="min-width:32px; padding:0 6px; font-size:11px;">&#187;</oj-button>
+  </div>
+</div>
+
+    <div style="text-align:right; margin-top:16px;">
+      <oj-button on-oj-action="[[$listeners.buttonAction]]" chroming="outlined">Back</oj-button>
+      <oj-button on-oj-action="[[$listeners.buttonAction2]]" chroming="callToAction" class="oj-sm-margin-2x-start">Save</oj-button>
+      <oj-button label="Submit Backup" chroming="callToAction" on-click="[[$listeners.submitBackup]]"
+        style="background:#28a745; color:white; border:none; font-weight:bold;">
+        <span slot="startIcon" class="oj-ux-ico-upload"></span>
+      </oj-button>
+
+      <oj-dialog id="loadingDialog" dialog-title="" modality="modal" cancel-behavior="none" style="width:280px; border-radius:10px; overflow:hidden;">
+        <div slot="body" style="text-align:center; padding:24px 16px;">
+          <div style="margin-bottom:12px;"><div style="width:36px; height:36px; border:3px solid #e0e0e0; border-top:3px solid #007bff; border-radius:50%; animation:spin 1s linear infinite; display:inline-block;"></div></div>
+          <h3 style="margin:0 0 4px 0; color:#1a1a1a; font-size:14px;">Processing...</h3>
+          <p style="margin:0; color:#666; font-size:11px;">Please wait, do not close this window.</p>
+        </div>
+      </oj-dialog>
+
+      <oj-dialog id="submitSuccessDialog" modality="modal" cancel-behavior="none" style="width:340px; border-radius:10px; overflow:hidden;">
+        <div slot="body" style="text-align:center; padding:16px 16px 8px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:#d4edda; display:inline-flex; align-items:center; justify-content:center; margin-bottom:8px;"><span style="font-size:20px; color:#28a745;">✓</span></div>
+          <h3 style="margin:0 0 6px 0; color:#1a1a1a; font-size:15px;">Backup Request Submitted</h3>
+          <p style="margin:0 0 6px 0; color:#555; font-size:12px; line-height:1.4;">You will receive the UCM ID via email once complete.</p>
+          <div style="background:#f0f4fa; border-radius:6px; padding:6px 10px; display:inline-block;">
+            <span style="font-size:11px; color:#333;"><strong>Email:</strong> <span style="color:#007bff;"><oj-bind-text value="[[ $flow.variables.email ]]"></oj-bind-text></span></span>
+          </div>
+        </div>
+        <div slot="footer" style="text-align:center; padding:0 16px 12px;">
+          <oj-button label="OK" chroming="callToAction" on-click="[[$listeners.closeSuccessDialog]]" style="min-width:80px;"></oj-button>
+        </div>
+      </oj-dialog>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER POPUPS -->
+<oj-popup id="popup-txnsrc" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.userTransactionSource }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Exp Source..."></oj-input-text></oj-popup>
+<oj-popup id="popup-exptype" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.expenditureTypeName }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Exp Type..."></oj-input-text></oj-popup>
+<oj-popup id="popup-expdate" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.expenditureItemDate }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Exp Date..."></oj-input-text></oj-popup>
+<oj-popup id="popup-batch" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.userBatchName }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Batch Name..."></oj-input-text></oj-popup>
+<oj-popup id="popup-tasknum" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.taskNumber }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Task..."></oj-input-text></oj-popup>
+<oj-popup id="popup-syslink" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.systemLinkageFunction }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search System Linkage..."></oj-input-text></oj-popup>
+<oj-popup id="popup-bill" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.billableFlag }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Billable..."></oj-input-text></oj-popup>
+<oj-popup id="popup-qty" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.quantity }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Quantity..."></oj-input-text></oj-popup>
+<oj-popup id="popup-rawcost" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.projfuncRawCost }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Raw Cost..."></oj-input-text></oj-popup>
+<oj-popup id="popup-burdencost" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.projfuncBurdenedCost }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Burden Cost..."></oj-input-text></oj-popup>
+<oj-popup id="popup-apinv" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.apInvoiceNumber }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Supplier Invoice..."></oj-input-text></oj-popup>
+<oj-popup id="popup-attach" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.attachmentFileName }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Attachment..."></oj-input-text></oj-popup>
+<oj-popup id="popup-dmdocid" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.dmDocumentId }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search DM Doc ID..."></oj-input-text></oj-popup>
+<oj-popup id="popup-expid" tail="simple" initial-focus="none" style="padding:8px;" class="filter-popup"><oj-input-text value="{{ $page.variables.filters.expenditureItemId }}" on-value-changed="[[$listeners.filterChanged]]" placeholder="Search Exp Item ID..."></oj-input-text></oj-popup>

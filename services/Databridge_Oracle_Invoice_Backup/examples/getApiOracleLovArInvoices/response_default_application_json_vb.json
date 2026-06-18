@@ -1,0 +1,25 @@
+{
+    "success": true,
+    "message": "AR invoices retrieved successfully",
+    "data": {
+        "RowCount": "4",
+        "ARInvoices": [
+            {
+                "invoice_id": "100002711402015",
+                "ar_invoice_number": "10010"
+            },
+            {
+                "invoice_id": "100002711445118",
+                "ar_invoice_number": "10011"
+            },
+            {
+                "invoice_id": "100002712025430",
+                "ar_invoice_number": "10012"
+            },
+            {
+                "invoice_id": "100002712195651",
+                "ar_invoice_number": "10013"
+            }
+        ]
+    }
+}

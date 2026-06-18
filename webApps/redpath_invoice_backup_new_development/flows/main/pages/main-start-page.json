@@ -1,0 +1,471 @@
+{
+  "title": "main",
+  "description": "",
+  "variables": {
+    "contractsname": {
+      "type": "string"
+    },
+    "getIcApiOracleLovContractsListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "Oracle_Invoice_Backup_OIC/getIcApiOracleLovContracts",
+        "itemsPath": "Contracts",
+        "responseType": "getIcApiOracleLovContractsResponse2",
+        "uriParameters": {
+          "P_BU_ID": "{{ $flow.variables.bu_id }}",
+          "P_PROJECT_ID": "{{ $flow.variables.project }}"
+        },
+        "keyAttributes": "name",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "name"
+          ]
+        }
+      }
+    },
+    "getIcApiOracleLovExpenditureTypeListSDP3": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "Oracle_Invoice_Backup_OIC/getIcApiOracleLovExpenditure_type",
+        "itemsPath": "Projects",
+        "responseType": "getIcApiOracleLovExpenditureTypeResponse3",
+        "uriParameters": {
+          "P_PROJECT_ID": "{{ $flow.variables.project }}"
+        },
+        "keyAttributes": "name",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "name"
+          ]
+        }
+      }
+    },
+    "getIcApiOracleLovProjectsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "Oracle_Invoice_Backup_OIC/getIcApiOracleLovProjects",
+        "keyAttributes": "PROJECT_DISPLAY",
+        "itemsPath": "Projects",
+        "responseType": "getIcApiOracleLovProjectsResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "PROJECT_DISPLAY"
+          ]
+        }
+      }
+    },
+    "getIcApiOracleLovProjectsListSDP3": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "Oracle_Invoice_Backup_OIC/getIcApiOracleLovProjects",
+        "itemsPath": "Projects",
+        "responseType": "getIcApiOracleLovProjectsResponse3",
+        "uriParameters": {
+          "P_BU_ID": "{{ $flow.variables.bu_id }}"
+        },
+        "keyAttributes": "name",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "name"
+          ]
+        }
+      }
+    },
+    "ppmInvoicenumber": {
+  "type": "string"
+},
+"AR_Invoice_Number": {
+  "type": "string"
+},
+"lovContractInvoices": {
+  "type": "vb/ArrayDataProvider2",
+  "defaultValue": {
+    "itemType": "getApiOracleLovContractInvoices",
+    "keyAttributes": "invoice_id",
+    "textFilterAttributes": [
+      "ppm_invoice_number"
+    ]
+  }
+},
+"lovArInvoices": {
+  "type": "vb/ArrayDataProvider2",
+  "defaultValue": {
+    "itemType": "getApiOracleLovArInvoices",
+    "keyAttributes": "invoice_id",
+    "textFilterAttributes": [
+      "ar_invoice_number"
+    ]
+  }
+},
+    "expFromDate": { "type": "string" },
+"expToDate": { "type": "string" },
+    "selectedExpTypes": { "type": "string[]", "defaultValue": [] },
+    "bipContractData": {
+      "type": "object[]"
+    },
+    "bu_id": {
+      "type": "string"
+    },
+    "contract_id": {
+      "type": "string"
+    },
+    "erroremail": {
+      "type": "string"
+    },
+"expenditure_type": {
+  "type": "vb/ArrayDataProvider2",
+  "defaultValue": {
+    "itemType": "getApiOracleLovExpenditure_type",
+    "keyAttributes": "EXPENDITURE_TYPE_NAME",
+    "textFilterAttributes": [
+      "EXPENDITURE_TYPE_NAME"
+    ]
+  }
+},
+    "lovbusinessunit": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getApiOracleLovBusinessUnits",
+        "keyAttributes": "bu_id",
+        "textFilterAttributes": [
+          "bu_name"
+        ]
+      }
+    },
+    "lovContracts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getApiOracleLovContracts",
+        "keyAttributes": "contract_id",
+        "textFilterAttributes": [
+          "contract_display"
+        ]
+      }
+    },
+    "lovProjects": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getApiOracleLovProjects2",
+        "keyAttributes": "PROJECT_ID",
+        "textFilterAttributes": [
+          "PROJECT_DISPLAY"
+        ]
+      }
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "savedSelections": {
+      "type": "object[]"
+    },
+    "selectedProjectId": {
+      "type": "string"
+    },
+    "selectedRows": {
+      "type": "object[]"
+    },
+"selectedExpSources": { "type": "string[]", "defaultValue": [] }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getIcApiOracleLovContractsResponse": {
+      "endpoint": "getIcApiOracleLovContracts",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "@decorators.getIcApiOracleLovContractsResponse2": {
+      "endpoint": "getIcApiOracleLovContracts",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "@decorators.getIcApiOracleLovExpenditureTypeResponse": {
+      "endpoint": "getIcApiOracleLovExpenditure_type",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "@decorators.getIcApiOracleLovExpenditureTypeResponse2": {
+      "endpoint": "getIcApiOracleLovExpenditure_type",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "@decorators.getIcApiOracleLovExpenditureTypeResponse3": {
+      "endpoint": "getIcApiOracleLovExpenditure_type",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "@decorators.getIcApiOracleLovProjectsResponse": {
+      "endpoint": "getIcApiOracleLovProjects",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "@decorators.getIcApiOracleLovProjectsResponse2": {
+      "endpoint": "getIcApiOracleLovProjects",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "@decorators.getIcApiOracleLovProjectsResponse3": {
+      "endpoint": "getIcApiOracleLovProjects",
+      "service": "Oracle_Invoice_Backup_OIC",
+      "path": "response"
+    },
+    "getApiOracleLovContractInvoices": {
+  "invoice_id": "string",
+  "ppm_invoice_number": "string"
+},
+"getApiOracleLovArInvoices": {
+  "invoice_id": "string",
+  "ar_invoice_number": "string"
+},
+"@decorators.getApiOracleLovContractInvoices": {
+  "endpoint": "getApiOracleLovContractInvoices",
+  "service": "Databridge_Oracle_Invoice_Backup",
+  "path": "response-_-data-_-PPMInvoices[0]"
+},
+"@decorators.getApiOracleLovArInvoices": {
+  "endpoint": "getApiOracleLovArInvoices",
+  "service": "Databridge_Oracle_Invoice_Backup",
+  "path": "response-_-data-_-ARInvoices[0]"
+},
+    "@decorators.getApiOracleLovBusinessUnits": {
+      "endpoint": "getApiOracleLovBusinessUnits",
+      "service": "Databridge_Oracle_Invoice_Backup",
+      "path": "response-_-data-_-BusinessUnits[0]"
+    },
+    "@decorators.getApiOracleLovContracts": {
+      "endpoint": "getApiOracleLovContracts",
+      "service": "Databridge_Oracle_Invoice_Backup",
+      "path": "response-_-data-_-Contracts[0]"
+    },
+    "@decorators.getApiOracleLovExpenditure_type": {
+      "endpoint": "getApiOracleLovExpenditure_type",
+      "service": "Databridge_Oracle_Invoice_Backup",
+      "path": "response-_-data-_-Projects[0]"
+    },
+    "@decorators.getApiOracleLovProjects2": {
+      "endpoint": "getApiOracleLovProjects2",
+      "service": "Databridge_Oracle_Invoice_Backup",
+      "path": "response-_-data-_-Projects[0]"
+    },
+    "getApiOracleLovBusinessUnits": {
+      "bu_id": "string",
+      "bu_name": "string"
+    },
+    "getApiOracleLovContracts": {
+      "contract_display": "string",
+      "contract_id": "string"
+    },
+"getApiOracleLovExpenditure_type": {
+  "EXPENDITURE_TYPE_NAME": "string",
+  "EXPENDITURE_TYPE_ID": "string"
+},
+    "getApiOracleLovProjects2": {
+      "PROJECT_DISPLAY": "string",
+      "PROJECT_ID": "string"
+    },
+    "getIcApiOracleLovContractsResponse": {
+      "Contracts": [
+        {
+          "contract_display": "string",
+          "contract_id": "string"
+        }
+      ]
+    },
+    "getIcApiOracleLovContractsResponse2": {
+      "Contracts": [
+        {
+
+          "contract_id": "string",
+          "name": "string"
+        }
+      ]
+    },
+    "getIcApiOracleLovExpenditureTypeResponse": {
+      "Projects": [
+        {
+          "EXPENDITURE_TYPE_ID": "string",
+          "EXPENDITURE_TYPE_NAME": "string"
+        }
+      ]
+    },
+    "getIcApiOracleLovExpenditureTypeResponse2": {
+      "Projects": [
+        {
+          "EXPENDITURE_TYPE_ID": "string",
+          "EXPENDITURE_TYPE_NAME": "string"
+        }
+      ]
+    },
+    "getIcApiOracleLovExpenditureTypeResponse3": {
+      "Projects": [
+        {
+          "EXPENDITURE_TYPE_ID": "string",
+          "name": "string"
+        }
+      ]
+    },
+    "getIcApiOracleLovProjectsResponse": {
+      "Projects": [
+        {
+          "name": "string",
+          "PROJECT_ID": "string"
+
+        }
+      ]
+    },
+    "getIcApiOracleLovProjectsResponse2": {
+      "Projects": [
+        {
+          "name": "string",
+          "PROJECT_ID": "string"
+
+        }
+      ]
+    },
+    "getIcApiOracleLovProjectsResponse3": {
+      "Projects": [
+        {
+          "name": "string",
+          "PROJECT_ID": "string"
+        }
+      ]
+    }
+
+  },
+  "eventListeners": {
+    "closeBackupSuccessDialog": {
+  "chains": [
+    {
+      "chain": "CloseBackupSuccessDialogChain"
+    }
+  ]
+},
+    "closeInvoiceBackupDialog": {
+  "chains": [
+    {
+      "chain": "CloseInvoiceBackupDialogChain"
+    }
+  ]
+},
+    "contractChanged": {
+  "chains": [
+    {
+      "chain": "ContractChangedChain",
+      "parameters": {
+        "value": "{{$event.detail.value}}"
+      }
+    }
+  ]
+},
+"submitInvoiceBackup": {
+  "chains": [
+    {
+      "chain": "SubmitInvoiceBackupChain"
+    }
+  ]
+},
+
+
+    "buttonClick": {
+      "chains": [
+        {
+          "chain": "ButtonClickChain",
+          "parameters": {
+            "event": "{{$event}}"
+          }
+        }
+      ]
+    },
+    "selectValueItem": {
+      "chains": [
+        {
+          "chain": "SelectValueItemChangeChain1"
+        }
+      ]
+    },
+    "selectValueItem2": {
+      "chains": [
+{
+          "chain": "SelectValueItemChangeChain3",
+          "parameters": {
+            "event": "{{$event}}",
+            "previousValue": "{{$event.detail.previousValue}}",
+            "value": "{{$event.detail.value}}",
+            "updatedFrom": "{{$event.detail.updatedFrom}}",
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}",
+            "valueItem": "{{ $event.detail.value }}"
+          }
+        },
+        {
+          "chain": "SelectValueItemChangeChain"
+        }
+      ]
+    },
+    "selectValueItem3": {
+      "chains": [
+        {
+          "chain": "SelectValueItemChangeChain4",
+          "parameters": {
+            "event": "{{$event}}",
+            "previousValue": "{{$event.detail.previousValue}}",
+            "value": "{{$event.detail.value}}",
+            "updatedFrom": "{{$event.detail.updatedFrom}}",
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}",
+            "valueItem": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "vbEnterListener"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-combobox-many": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-highlight-text": {
+        "path": "ojs/ojhighlighttext"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-select-many": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-combobox-many": {
+  "path": "ojs/ojselectcombobox"
+},
+"oj-dialog": {
+  "path": "ojs/ojdialog"
+}
+
+   }
+  }
+}

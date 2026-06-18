@@ -1,0 +1,65 @@
+<div id="pageContent" class="oj-flex oj-sm-flex-direction-column oj-sm-flex-wrap-nowrap vb-web-applayout-page fixed-header">
+  <!-- Header: Includes branding and avatar -->
+  <oj-vb-fragment id="shell-header" bridge="[[vbBridge]]" name="shell-header">
+  </oj-vb-fragment>
+
+  <!-- Displays notification messages -->
+  <div
+    class="oj-flex-item oj-flex-bar oj-sm-align-items-center oj-sm-flex-initial oj-sm-align-self-flex-end oj-md-margin-4x-end">
+    <div class="oj-flex-bar-start">
+      <oj-button label="Button" on-oj-action="[[$listeners.buttonAction]]" display="icons">
+        <span slot="startIcon" class="oj-web-applayout-offcanvas-icon"></span>
+        
+      </oj-button>
+      
+    </div>
+  </div>
+  <oj-messages id="vbDefaultNotifier" display-options.category="none" position="{}" display="general" messages="[[$page.variables.messagesADP]]" on-oj-close="[[$listeners.onMessageClose]]"></oj-messages>
+
+  <!-- Container to scroll content and the footer independent of header -->
+  <div class="vb-content-and-footer-container oj-flex oj-sm-flex-direction-column oj-sm-flex-1 oj-sm-flex-wrap-nowrap">
+    <!-- Renders flow content -->
+    <oj-vb-content id="vbRouterContent" class="vb-pages-module oj-flex-item oj-flex" config="[[vbRouterFlow]]">
+
+    </oj-vb-content>
+
+    <!-- Footer: Remove if not needed -->
+    <oj-vb-fragment id="shell-footer" bridge="[[vbBridge]]" name="shell-footer">
+    </oj-vb-fragment>
+  </div>
+<oj-drawer-popup id="menu" edge="end" opened="{{ $application.variables.sidebar }}" style="background-color: #000; padding: 20px; border-radius: 8px;">
+  <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+    <li style="padding: 12px 0; border-bottom: 1px solid #333;">
+      <a href="javascript:void(0)" on-click="[[$listeners.navInvoiceBackup]]" style="color: #fff; display: flex; align-items: center; text-decoration: none;">
+        <span class="oj-ux-ico-backup" style="margin-right: 10px;"></span>
+        Invoice Backup
+      </a>
+    </li>
+    <li style="padding: 12px 0; border-bottom: 1px solid #333;">
+      <a href="javascript:void(0)" on-click="[[$listeners.navSearchHistory]]" style="color: #fff; display: flex; align-items: center; text-decoration: none;">
+        <span class="oj-ux-ico-history" style="margin-right: 10px;"></span>
+        Search History
+      </a>
+    </li>
+    <li style="padding: 12px 0; border-bottom: 1px solid #333;">
+      <a href="javascript:void(0)" on-click="[[$listeners.navMissingAttachments]]" style="color: #fff; display: flex; align-items: center; text-decoration: none;">
+        <span class="oj-ux-ico-attachment" style="margin-right: 10px;"></span>
+        Missing Attachments
+      </a>
+    </li>
+    <li style="padding: 12px 0; border-bottom: 1px solid #333;">
+      <a href="javascript:void(0)" style="color: #888; display: flex; align-items: center; text-decoration: none; cursor: default;">
+        <span class="oj-ux-ico-settings" style="margin-right: 10px;"></span>
+        Configure
+      </a>
+    </li>
+    <li style="padding: 12px 0;">
+      <a href="javascript:void(0)" style="color: #888; display: flex; align-items: center; text-decoration: none; cursor: default;">
+        <span class="oj-ux-ico-user-account" style="margin-right: 10px;"></span>
+        Admin
+      </a>
+    </li>
+  </ul>
+</oj-drawer-popup>
+  <div class="oj-flex oj-flex-item oj-sm-flex-initial" data-vb-layout-type="flex"></div>
+</div>

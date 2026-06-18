@@ -1,0 +1,756 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Databridge",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/databridge",
+            "description": "Databridge"
+        }
+    ],
+    "paths": {
+        "/api/oracle/lov/business-units": {
+            "get": {
+                "operationId": "getApiOracleLovBusinessUnits",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovBusiness-units"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovBusinessUnits/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/projects": {
+            "get": {
+                "operationId": "getApiOracleLovProjects2",
+                "parameters": [
+                    {
+                        "name": "P_BU_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovProjects"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovProjects2/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/contracts": {
+            "get": {
+                "operationId": "getApiOracleLovContracts",
+                "parameters": [
+                    {
+                        "name": "P_BU_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovContracts"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovContracts/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/error-emails": {
+            "get": {
+                "operationId": "getApiOracleLovErrorEmails2",
+                "parameters": [
+                    {
+                        "name": "P_BU_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovError-emails"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovErrorEmails2/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/invoice-search": {
+            "get": {
+                "operationId": "getApiOracleLovInvoiceSearch",
+                "parameters": [
+                    {
+                        "name": "EXP_ITEM_FROM_DATE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "EXP_ITEM_TO_DATE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }                    ,
+                    {
+                        "name": "PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }                    ,
+                    {
+                        "name": "USER_TRANSACTION_SOURCE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }                    ,
+                    {
+                        "name": "EXPENDITURE_TYPE_NAME",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovInvoice-search"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovInvoiceSearch/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/trigger-invoice-backup": {
+            "get": {
+                "operationId": "getApiOracleTriggerInvoiceBackup2",
+                "parameters": [
+                    {
+                        "name": "P_INVOICE_FORMAT_CODE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "Standard"
+                        }
+                    },
+                    {
+                        "name": "P_INVOICE_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_LE_BANK_ACCOUNT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_EMAIL",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_ERROR_EMAIL",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/contract-invoices": {
+            "get": {
+                "operationId": "getApiOracleLovContractInvoices",
+                "parameters": [
+                    {
+                        "name": "P_CONTRACT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovContract-invoices"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovContractInvoices/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/ar-invoices": {
+            "get": {
+                "operationId": "getApiOracleLovArInvoices",
+                "parameters": [
+                    {
+                        "name": "P_CONTRACT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovAr-invoices"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovArInvoices/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/suppliers": {
+            "get": {
+                "operationId": "getApiOracleLovSuppliers",
+                "parameters": [
+                    {
+                        "name": "P_PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_INVOICE_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/api/oracle/lov/expenditure_type": {
+            "get": {
+                "operationId": "getApiOracleLovExpenditure_type",
+                "parameters": [
+                    {
+                        "name": "P_PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApiOracleLovExpenditure_type"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApiOracleLovExpenditure_type/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetApiOracleLovBusiness-units": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "RowCount": {
+                                "type": "string"
+                            },
+                            "BusinessUnits": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "bu_id": {
+                                            "type": "string"
+                                        },
+                                        "bu_name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApiOracleLovProjects": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "RowCount": {
+                                "type": "string"
+                            },
+                            "Projects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "PROJECT_ID": {
+                                            "type": "string"
+                                        },
+                                        "PROJECT_DISPLAY": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApiOracleLovContracts": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "RowCount": {
+                                "type": "string"
+                            },
+                            "Contracts": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "contract_id": {
+                                            "type": "string"
+                                        },
+                                        "contract_display": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApiOracleLovError-emails": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "DESCRIPTION": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApiOracleLovInvoice-search": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "Projects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "projectNumber": {
+                                            "type": "string"
+                                        },
+                                        "projectName": {
+                                            "type": "string"
+                                        },
+                                        "contractNumber": {
+                                            "type": "string"
+                                        },
+                                        "apInvoiceNumber": {
+                                            "type": "string"
+                                        },
+                                        "expenditureItemId": {
+                                            "type": "string"
+                                        },
+                                        "expenditureItemDate": {
+                                            "type": "string"
+                                        },
+                                        "expenditureTypeId": {
+                                            "type": "string"
+                                        },
+                                        "billTypeClassCode": {
+                                            "type": "string"
+                                        },
+                                        "laborRateTypeCode": {
+                                            "type": "string"
+                                        },
+                                        "billableFlag": {
+                                            "type": "string"
+                                        },
+                                        "userTransactionSource": {
+                                            "type": "string"
+                                        },
+                                        "idAtCntrTable": {
+                                            "type": "string"
+                                        },
+                                        "expenditureTypeName": {
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "type": "string"
+                                        },
+                                        "apInvoiceId": {
+                                            "type": "string"
+                                        },
+                                        "taskId": {
+                                            "type": "string"
+                                        },
+                                        "taskNumber": {
+                                            "type": "string"
+                                        },
+                                        "taskName": {
+                                            "type": "string"
+                                        },
+                                        "projfuncRawCost": {
+                                            "type": "string"
+                                        },
+                                        "rawCostRate": {
+                                            "type": "string"
+                                        },
+                                        "projfuncBurdenedCost": {
+                                            "type": "string"
+                                        },
+                                        "burdenCostRate": {
+                                            "type": "string"
+                                        },
+                                        "invoicedFlag": {
+                                            "type": "string"
+                                        },
+                                        "orgId": {
+                                            "type": "string"
+                                        },
+                                        "projectUnitId": {
+                                            "type": "string"
+                                        },
+                                        "projectRawCost": {
+                                            "type": "string"
+                                        },
+                                        "unitOfMeasure": {
+                                            "type": "string"
+                                        },
+                                        "expenditureOrganizationId": {
+                                            "type": "string"
+                                        },
+                                        "projectBurdenedCost": {
+                                            "type": "string"
+                                        },
+                                        "attachmentFileName": {
+                                            "type": "string"
+                                        },
+                                        "dmDocumentId": {
+                                            "type": "string"
+                                        },
+                                        "dmVersionNumber": {
+                                            "type": "string"
+                                        },
+                                        "attachedDocumentId": {
+                                            "type": "string"
+                                        },
+                                        "attachmentEntity": {
+                                            "type": "string"
+                                        },
+                                        "source": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "quantity": {
+                                            "type": "string"
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApiOracleLovContract-invoices": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "RowCount": {
+                                "type": "string"
+                            },
+                            "PPMInvoices": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "invoice_id": {
+                                            "type": "string"
+                                        },
+                                        "ppm_invoice_number": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApiOracleLovAr-invoices": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "RowCount": {
+                                "type": "string"
+                            },
+                            "ARInvoices": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "invoice_id": {
+                                            "type": "string"
+                                        },
+                                        "ar_invoice_number": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApiOracleLovExpenditure_type": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "Projects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "EXPENDITURE_TYPE_NAME": {
+                                            "type": "string"
+                                        },
+                                        "EXPENDITURE_TYPE_ID": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

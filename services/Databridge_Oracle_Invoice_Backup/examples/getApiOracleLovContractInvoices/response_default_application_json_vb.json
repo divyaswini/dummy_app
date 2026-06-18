@@ -1,0 +1,17 @@
+{
+    "success": true,
+    "message": "Contract invoices retrieved successfully",
+    "data": {
+        "RowCount": "2",
+        "PPMInvoices": [
+            {
+                "invoice_id": "100002916472642",
+                "ppm_invoice_number": "5"
+            },
+            {
+                "invoice_id": "100003282978344",
+                "ppm_invoice_number": "6"
+            }
+        ]
+    }
+}

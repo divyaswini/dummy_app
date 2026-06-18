@@ -1,0 +1,664 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "OracleIntegration",
+        "version": "1.0.0",
+        "x-vb": {
+            "transforms": {
+                "path": "../Transform.js"
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/OracleIntegration",
+            "description": "OracleIntegration"
+        }
+    ],
+    "paths": {
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_BUSINESS_UNITS/1.0": {
+            "get": {
+                "operationId": "getIcApiOracleLovBusinessUnits",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_BUSINESS_UNITS1_0"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_BUSINESS_UNITS1_0/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_PROJEC/1.0": {
+            "parameters": [
+                {
+                    "name": "P_BU_ID",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getIcApiOracleLovProjects",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_PROJEC1_0"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiOracleLovProjects/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_PPM_CONTRACTS/1.0": {
+            "get": {
+                "operationId": "getIcApiOracleLovContracts",
+                "parameters": [
+                    {
+                        "name": "P_BU_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_PPM_CONTRACTS1_0"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiOracleLovContracts/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_ERROR_EMAIL/1.0": {
+            "get": {
+                "operationId": "getIcApiOracleErrorEmails",
+                "parameters": [
+                    {
+                        "name": "P_BU_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_ERROR_EMAIL1_0"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiOracleErrorEmails/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_INV_SEARC/1.0": {
+            "get": {
+                "operationId": "getIcApiOracleLovInvoiceSearch",
+                "parameters": [
+                    {
+                        "name": "EXP_ITEM_FROM_DATE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "EXP_ITEM_TO_DATE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "attached_document_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "USER_TRANSACTION_SOURCE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "EXPENDITURE_TYPE_NAME",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_INV_SEARC1_0"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiOracleLovInvoiceSearch/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_PPM_INV_ERPC/1.0": {
+            "post": {
+                "operationId": "postIcApiTriggerInvoiceBackup",
+                "parameters": [
+                    {
+                        "name": "P_PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Email",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_INVOICE_FORMAT_CODE",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "Standard"
+                        }
+                    },
+                    {
+                        "name": "P_VENDOR_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_ERROR_EMAIL",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_INVOICE_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "P_LE_BANK_ACCOUNT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany",
+                    "queryParameters": {
+                        "P_LE_BANK_ACCOUNT_ID": ""
+                    }
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_PPM_INVOICES/1.0": {
+            "get": {
+                "operationId": "getIcApiOracleLovContractInvoices",
+                "parameters": [
+                    {
+                        "name": "p_contract_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_PPM_INVOICES1_0"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiOracleLovContractInvoices/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_AR_INVOICES/1.0": {
+            "get": {
+                "operationId": "getIcApiLovArInvoices",
+                "parameters": [
+                    {
+                        "name": "p_contract_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_AR_INVOICES1_0"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiLovArInvoices/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v2/flows/rest/project/REDPATH_INVOICE_BACKUP/GLD_ITC_0001_LOV_EXP_TYPE/1.0": {
+            "get": {
+                "operationId": "getIcApiOracleLovExpenditure_type",
+                "parameters": [
+                    {
+                        "name": "P_PROJECT_ID",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getIcApiOracleLovExpenditure_type/response_default_application_json_vb.json"
+                                    }
+                                },
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_EXP_TYPE1_0"
+                                }
+                            }
+                        }
+                    }
+               },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_BUSINESS_UNITS1_0": {
+                "type": "object",
+                "properties": {
+                    "RowCount": {
+                        "type": "string"
+                    },
+                    "BusinessUnits": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "bu_id": {
+                                    "type": "string"
+                                },
+                                "bu_name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_PROJEC1_0": {
+                "type": "object",
+                "properties": {
+                    "RowCount": {
+                        "type": "string"
+                    },
+                    "Projects": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "PROJECT_ID": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_PPM_CONTRACTS1_0": {
+                "type": "object",
+                "properties": {
+                    "RowCount": {
+                        "type": "string"
+                    },
+                    "Contracts": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "contract_id": {
+                                    "type": "string"
+                                },
+                                "contract_display": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_ERROR_EMAIL1_0": {
+                "type": "object",
+                "properties": {
+                    "DESCRIPTION": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_INV_SEARC1_0": {
+                "type": "object",
+                "properties": {
+                    "Projects": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "PROJECT_NUMBER": {
+                                    "type": "string"
+                                },
+                                "PROJECT_NAME": {
+                                    "type": "string"
+                                },
+                                "CONTRACT_NUMBER": {
+                                    "type": "string"
+                                },
+                                "AP_INVOICE_NUMBER": {
+                                    "type": "string"
+                                },
+                                "EXPENDITURE_ITEM_ID": {
+                                    "type": "integer"
+                                },
+                                "EXPENDITURE_ITEM_DATE": {
+                                    "type": "string"
+                                },
+                                "EXPENDITURE_TYPE_ID": {
+                                    "type": "integer"
+                                },
+                                "BILL_TYPE_CLASS_CODE": {
+                                    "type": "string"
+                                },
+                                "LABOR_RATE_TYPE_CODE": {
+                                    "type": "string"
+                                },
+                                "BILLABLE_FLAG": {
+                                    "type": "string"
+                                },
+                                "USER_TRANSACTION_SOURCE": {
+                                    "type": "string"
+                                },
+                                "ID_AT_CNTR_TABLE": {
+                                    "nullable": true
+                                },
+                                "EXPENDITURE_TYPE_NAME": {
+                                    "type": "string"
+                                },
+                                "DESCRIPTION": {
+                                    "type": "string"
+                                },
+                                "PROJECT_ID": {
+                                    "type": "integer"
+                                },
+                                "AP_INVOICE_ID": {
+                                    "type": "integer"
+                                },
+                                "TASK_ID": {
+                                    "type": "integer"
+                                },
+                                "QUANTITY": {
+                                    "type": "integer"
+                                },
+                                "PROJFUNC_RAW_COST": {
+                                    "type": "integer"
+                                },
+                                "RAW_COST_RATE": {
+                                    "type": "integer"
+                                },
+                                "PROJFUNC_BURDENED_COST": {
+                                    "type": "integer"
+                                },
+                                "BURDEN_COST_RATE": {
+                                    "type": "integer"
+                                },
+                                "INVOICED_FLAG": {
+                                    "type": "string"
+                                },
+                                "ORG_ID": {
+                                    "type": "integer"
+                                },
+                                "PROJECT_UNIT_ID": {
+                                    "type": "integer"
+                                },
+                                "PROJECT_RAW_COST": {
+                                    "type": "integer"
+                                },
+                                "UNIT_OF_MEASURE": {
+                                    "type": "string"
+                                },
+                                "EXPENDITURE_ORGANIZATION_ID": {
+                                    "type": "integer"
+                                },
+                                "PROJECT_BURDENED_COST": {
+                                    "type": "integer"
+                                },
+                                "TASK_NUMBER": {
+                                    "type": "string"
+                                },
+                                "ATTACHMENT_FILE_NAME": {
+                                    "type": "string"
+                                },
+                                "DM_DOCUMENT_ID": {
+                                    "type": "string"
+                                },
+                                "DM_VERSION_NUMBER": {
+                                    "type": "integer"
+                                },
+                                "ATTACHED_DOCUMENT_ID": {
+                                    "type": "integer"
+                                },
+                                "ATTACHMENT_ENTITY": {
+                                    "type": "string"
+                                },
+                                "USER_BATCH_NAME": {
+                                    "type": "string"
+                                },
+                                "SYSTEM_LINKAGE_FUNCTION": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_PPM_INVOICES1_0": {
+                "type": "object",
+                "properties": {
+                    "RowCount": {
+                        "type": "string"
+                    },
+                    "PPMInvoices": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "invoice_id": {
+                                    "type": "string"
+                                },
+                                "ppm_invoice_number": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_AR_INVOICES1_0": {
+                "type": "object",
+                "properties": {
+                    "RowCount": {
+                        "type": "string"
+                    },
+                    "ARInvoices": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "invoice_id": {
+                                    "type": "string"
+                                },
+                                "ar_invoice_number": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetIcApiIntegrationV2FlowsRestProjectREDPATH_INVOICE_BACKUPGLD_ITC_0001_LOV_EXP_TYPE1_0": {
+                "type": "object",
+                "properties": {
+                    "Projects": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "EXPENDITURE_TYPE_NAME": {
+                                    "type": "string"
+                                },
+                                "EXPENDITURE_TYPE_ID": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

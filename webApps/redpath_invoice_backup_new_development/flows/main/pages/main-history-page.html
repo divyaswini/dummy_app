@@ -1,0 +1,135 @@
+
+
+<!-- ========== FILTER SECTION ========== --><div class="oj-flex oj-sm-margin-4x-top oj-sm-margin-4x-bottom oj-sm-justify-content-center">
+  <div class="oj-flex-item oj-sm-12 oj-md-10">
+    <h2 class="oj-typography-heading-sm oj-sm-margin-2x-bottom">Search History</h2>
+    <div style="display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:220px;">
+        <oj-select-single label-hint="Business Unit" data="[[ $variables.lovbusinessunit ]]" item-text="bu_name"
+          value="{{ $variables.bu_id }}" on-value-item-changed="[[$listeners.selectValueItem]]"></oj-select-single>
+      </div>
+      <div style="flex:1; min-width:220px;">
+        <oj-select-single label-hint="Project" data="[[ $variables.lovProjects ]]" item-text="PROJECT_DISPLAY"
+          value="{{ $variables.project_id }}" on-value-item-changed="[[$listeners.projectChanged]]"></oj-select-single>
+      </div>
+      <div style="flex:0 0 auto;">
+<oj-button label="Search" chroming="callToAction" on-click="[[$listeners.searchClick]]">
+          <span slot="startIcon" class="oj-ux-ico-search"></span>
+        </oj-button>
+        <oj-button label="Clear" chroming="outlined" on-click="[[$listeners.clearHistory]]" style="margin-left:8px;">
+          <span slot="startIcon" class="oj-ux-ico-close"></span>
+        </oj-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== LOADING ========== -->
+<oj-bind-if test="[[ $variables.isLoading ]]">
+  <div style="text-align:center; padding:40px; color:#6b7280; font-size:14px;">
+    Loading backup history...
+  </div>
+</oj-bind-if>
+
+<!-- ========== NO DATA ========== -->
+<oj-bind-if test="[[ !$variables.isLoading && $variables.historyData.length === 0 && $variables.hasSearched ]]">
+  <div style="text-align:center; padding:40px; color:#999; font-size:14px;">
+    No backup history found for this project.
+  </div>
+</oj-bind-if>
+<style>
+  .hist-row:hover > div { background:#f5f7fa !important; }
+</style>
+<!-- ========== HISTORY TABLE ========== -->
+<oj-bind-if test="[[ !$variables.isLoading && $variables.historyData.length > 0 ]]">
+  <div class="oj-flex oj-sm-justify-content-center" style="margin-top:8px;">
+    <div class="oj-flex-item oj-sm-12 oj-md-10">
+
+      <div style="overflow:auto; max-height:560px; border:1px solid #d1d5db; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.08); position:relative;">
+
+        <!-- Header -->
+        <div style="display:grid; grid-template-columns:70px 200px 180px 260px 200px 180px 180px 200px 200px; min-width:1670px; background:#6b7280; color:#fff; font-size:12px; font-weight:600; position:sticky; top:0; z-index:10;">
+          <div style="padding:10px 8px; border-right:1px solid rgba(255,255,255,0.15); text-align:left; position:sticky; left:0; z-index:12; background:#6b7280;">Version</div>
+          <div style="padding:10px 8px; border-right:2px solid rgba(255,255,255,0.3); text-align:left; position:sticky; left:70px; z-index:12; background:#6b7280;">Project Name</div>
+          <div style="padding:10px 8px; border-right:1px solid rgba(255,255,255,0.15); text-align:left;">Expenditure Source</div>
+          <div style="padding:10px 8px; border-right:1px solid rgba(255,255,255,0.15); text-align:left;">Expenditure Type</div>
+          <div style="padding:10px 8px; border-right:1px solid rgba(255,255,255,0.15); text-align:left;">Batch Names</div>
+          <div style="padding:10px 8px; border-right:1px solid rgba(255,255,255,0.15); text-align:left;">Expenditure Item From Date</div>
+          <div style="padding:10px 8px; border-right:1px solid rgba(255,255,255,0.15); text-align:left;">Expenditure Item To Date</div>
+          <div style="padding:10px 8px; border-right:1px solid rgba(255,255,255,0.15); text-align:left;">UCM Document ID</div>
+          <div style="padding:10px 8px; text-align:left;">Created Date</div>
+        </div>
+
+        <!-- Data Rows -->
+        <oj-bind-for-each data="[[ $variables.paginatedHistory ]]">
+          <template>
+<div class="hist-row" style="display:grid; grid-template-columns:70px 200px 180px 260px 200px 180px 180px 200px 200px; min-width:1670px; border-bottom:1px solid #e5e7eb; font-size:12px; background:#fff;">              <div style="padding:8px; border-right:1px solid #eee; text-align:left; font-weight:bold; position:sticky; left:0; z-index:2; background:#fff;">
+                <oj-bind-text value="[[ $current.data.version ]]"></oj-bind-text>
+              </div>
+              <div style="padding:8px; border-right:2px solid #d1d5db; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; position:sticky; left:70px; z-index:2; background:#fff;">
+                <oj-bind-text value="[[ $current.data.project_name ]]"></oj-bind-text>
+              </div>
+              <div style="padding:8px; border-right:1px solid #eee; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                <oj-bind-text value="[[ $current.data.exp_source ]]"></oj-bind-text>
+              </div>
+              <div style="padding:8px; border-right:1px solid #eee; text-align:left; line-height:1.8;">
+                <oj-bind-for-each data="[[ $current.data.exp_type_list ]]">
+                  <template>
+                    <div><oj-bind-text value="[[ $current.data ]]"></oj-bind-text></div>
+                  </template>
+                </oj-bind-for-each>
+              </div>
+              <div style="padding:8px; border-right:1px solid #eee; text-align:left; line-height:1.8;">
+                <oj-bind-for-each data="[[ $current.data.batch_names_list ]]">
+                  <template>
+                    <div><oj-bind-text value="[[ $current.data ]]"></oj-bind-text></div>
+                  </template>
+                </oj-bind-for-each>
+              </div>
+              <div style="padding:8px; border-right:1px solid #eee; text-align:left;">
+                <oj-bind-text value="[[ $current.data.exp_from_date ]]"></oj-bind-text>
+              </div>
+              <div style="padding:8px; border-right:1px solid #eee; text-align:left;">
+                <oj-bind-text value="[[ $current.data.exp_to_date ]]"></oj-bind-text>
+              </div>
+              <div style="padding:8px; border-right:1px solid #eee; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#007bff; font-weight:bold;">
+                <oj-bind-text value="[[ $current.data.ucm_document_id ]]"></oj-bind-text>
+              </div>
+              <div style="padding:8px; text-align:left;">
+                <oj-bind-text value="[[ $current.data.created_date ]]"></oj-bind-text>
+              </div>
+            </div>
+          </template>
+        </oj-bind-for-each>
+
+      </div>
+
+      <!-- PAGINATION -->
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding:8px 4px;">
+        <div style="font-size:12px; color:#555;">
+          Showing
+          <strong><oj-bind-text value="[[ Math.min((($variables.currentPage - 1) * $variables.rowsPerPage) + 1, $variables.historyData.length) ]]"></oj-bind-text></strong>
+          –
+          <strong><oj-bind-text value="[[ Math.min($variables.currentPage * $variables.rowsPerPage, $variables.historyData.length) ]]"></oj-bind-text></strong>
+          of
+          <strong><oj-bind-text value="[[ $variables.historyData.length ]]"></oj-bind-text></strong> rows
+        </div>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <oj-button chroming="outlined" on-click="[[$listeners.historyFirstPage]]" disabled="[[ $variables.currentPage <= 1 ]]"
+            style="min-width:32px; padding:0 6px; font-size:11px;">&#171;</oj-button>
+          <oj-button chroming="outlined" on-click="[[$listeners.historyPrevPage]]" disabled="[[ $variables.currentPage <= 1 ]]"
+            style="min-width:32px; padding:0 6px; font-size:11px;">&#8249;</oj-button>
+          <span style="font-size:12px; color:#333; padding:0 8px;">
+            Page <strong><oj-bind-text value="[[ $variables.currentPage ]]"></oj-bind-text></strong>
+            of <strong><oj-bind-text value="[[ Math.max(1, Math.ceil($variables.historyData.length / $variables.rowsPerPage)) ]]"></oj-bind-text></strong>
+          </span>
+          <oj-button chroming="outlined" on-click="[[$listeners.historyNextPage]]" disabled="[[ $variables.currentPage >= Math.ceil($variables.historyData.length / $variables.rowsPerPage) ]]"
+            style="min-width:32px; padding:0 6px; font-size:11px;">&#8250;</oj-button>
+          <oj-button chroming="outlined" on-click="[[$listeners.historyLastPage]]" disabled="[[ $variables.currentPage >= Math.ceil($variables.historyData.length / $variables.rowsPerPage) ]]"
+            style="min-width:32px; padding:0 6px; font-size:11px;">&#187;</oj-button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</oj-bind-if>

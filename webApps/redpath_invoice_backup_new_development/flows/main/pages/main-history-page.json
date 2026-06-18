@@ -1,0 +1,187 @@
+{
+  "title": "main-history",
+  "description": "Backup History Page",
+  "variables": {
+    "currentPage": {
+  "type": "number",
+  "defaultValue": 1
+},
+"rowsPerPage": {
+  "type": "number",
+  "defaultValue": 10
+},
+"paginatedHistory": {
+  "type": "object[]",
+  "defaultValue": []
+},
+    "bu_id": {
+      "type": "string"
+    },
+    "exp_type_list": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "isLoading": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "hasSearched": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "historyData": {
+      "type": "object[]",
+      "defaultValue": []
+    },
+    "lovbusinessunit": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getApiOracleLovBusinessUnits",
+        "keyAttributes": "bu_id",
+        "textFilterAttributes": [
+          "bu_name"
+        ]
+      }
+    },
+    "lovProjects": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getApiOracleLovProjects2",
+        "keyAttributes": "PROJECT_ID",
+        "textFilterAttributes": [
+          "PROJECT_DISPLAY"
+        ]
+      }
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getApiOracleLovBusinessUnits": {
+      "endpoint": "getApiOracleLovBusinessUnits",
+      "service": "Databridge_Oracle_Invoice_Backup",
+      "path": "response-_-data-_-BusinessUnits[0]"
+    },
+    "@decorators.getApiOracleLovProjects2": {
+      "endpoint": "getApiOracleLovProjects2",
+      "service": "Databridge_Oracle_Invoice_Backup",
+      "path": "response-_-data-_-Projects[0]"
+    },
+    "getApiOracleLovBusinessUnits": {
+      "bu_id": "string",
+      "bu_name": "string"
+    },
+    "getApiOracleLovProjects2": {
+      "PROJECT_DISPLAY": "string",
+      "PROJECT_ID": "string"
+    }
+  },
+  "eventListeners": {
+    "clearHistory": {
+  "chains": [
+    {
+      "chain": "ClearHistoryChain",
+      "parameters": {}
+    }
+  ]
+},
+    "historyPrevPage": {
+  "chains": [
+    {
+      "chain": "HistoryPaginationChain",
+      "parameters": {
+        "direction": "prev"
+      }
+    }
+  ]
+},
+"historyNextPage": {
+  "chains": [
+    {
+      "chain": "HistoryPaginationChain",
+      "parameters": {
+        "direction": "next"
+      }
+    }
+  ]
+},
+"historyFirstPage": {
+  "chains": [
+    {
+      "chain": "HistoryPaginationChain",
+      "parameters": {
+        "direction": "first"
+      }
+    }
+  ]
+},
+"historyLastPage": {
+  "chains": [
+    {
+      "chain": "HistoryPaginationChain",
+      "parameters": {
+        "direction": "last"
+      }
+    }
+  ]
+},
+    "buChanged": {
+      "chains": [
+        {
+          "chain": "BuChangedChain"
+        }
+      ]
+    },
+    "projectChanged": {
+      "chains": [
+        {
+          "chain": "ProjectChangedChain"
+        }
+      ]
+    },
+    "searchClick": {
+      "chains": [
+        {
+          "chain": "SearchHistoryChain"
+        }
+      ]
+    },
+    "selectValueItem": {
+      "chains": [
+        {
+          "chain": "SelectValueItemChangeChain",
+          "parameters": {
+            "event": "{{$event}}",
+            "previousValue": "{{$event.detail.previousValue}}",
+            "value": "{{$event.detail.value}}",
+            "updatedFrom": "{{$event.detail.updatedFrom}}",
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}",
+            "valueItem": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "vbEnterListener"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      }
+    }
+  }
+}

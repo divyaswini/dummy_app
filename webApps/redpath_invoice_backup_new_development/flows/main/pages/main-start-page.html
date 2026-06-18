@@ -1,0 +1,140 @@
+
+
+<!-- ========== INFORMATION SECTION ========== --><div class="oj-flex oj-sm-margin-4x-top oj-sm-margin-4x-bottom oj-sm-justify-content-center">
+  <div class="oj-flex-item oj-sm-12 oj-md-8" style="padding:0;">
+  <h2 class="oj-typography-heading-sm oj-sm-margin-2x-bottom oj-helper-text-align-center">Invoice Backup</h2>
+  <oj-form-layout max-columns="2" columns="2" style="width:100%; max-width:100%;">
+      <oj-select-single label-hint="Business Unit" data="[[ $variables.lovbusinessunit ]]" item-text="bu_name"
+        value="{{ $flow.variables.bu_id }}" on-value-item-changed="[[$listeners.selectValueItem]]"></oj-select-single>
+      <oj-select-single label-hint="Project" value="{{ $flow.variables.project_id }}"
+        on-value-item-changed="[[$listeners.selectValueItem2]]" data="[[$variables.getIcApiOracleLovProjectsListSDP3]]"
+        item-text="name"></oj-select-single>
+
+        <!-- <oj-select-single label-hint="Test" data="[[$variables.getIcApiOracleLovProjectsListSDP]]"
+          item-text="PROJECT_DISPLAY">
+        </oj-select-single> -->
+<!-- <oj-combobox-many label-hint="Expenditure Type" options="[[ $variables.expenditure_type ]]" 
+  options-keys.value="EXPENDITURE_TYPE_NAME"
+  options-keys.label="EXPENDITURE_TYPE_NAME"
+  value="{{ $variables.selectedExpTypes }}">
+</oj-combobox-many> -->
+      <oj-select-single label-hint="Expenditure type" item-text="name"
+        value="{{ $flow.variables.expenditure_type_name }}"
+        data="[[$variables.getIcApiOracleLovExpenditureTypeListSDP3]]"></oj-select-single>
+
+
+
+      <oj-select-many label-hint="Expenditure Source" value="{{ $variables.selectedExpSources }}">
+  <oj-option value="Oracle Fusion Payables">Oracle Fusion Payables</oj-option>
+</oj-select-many>
+      <oj-select-single label-hint="Supplier"></oj-select-single>
+<oj-select-single label-hint="Contracts" item-text="name" value="{{ $flow.variables.contractname }}"
+  on-value-item-changed="[[$listeners.contractChanged]]" data="[[$variables.getIcApiOracleLovContractsListSDP2]]"></oj-select-single>
+<oj-input-date label-hint="Expenditure  Item From Date" value="{{ $variables.expFromDate }}"></oj-input-date>
+<oj-input-date label-hint="Expenditure  Item To Date" value="{{ $variables.expToDate }}"></oj-input-date>
+    </oj-form-layout>
+  </div>
+</div>
+
+<!-- ========== EMAIL SECTION ========== -->
+<div class="oj-flex oj-sm-justify-content-center" style="margin-top:-16px; margin-bottom:24px;">
+  <div class="oj-flex-item oj-sm-12 oj-md-8" style="overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:12px; padding-left:4px; padding-right:4px;">
+      <div style="flex:1; overflow:hidden;">
+<oj-input-text value="{{ $flow.variables.email }}" placeholder="Enter email address" style="width:100%;"></oj-input-text>      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== OPTION 1: RUN FOR EXCLUSIVE CRITERIA ========== -->
+<div class="oj-flex oj-sm-justify-content-center oj-sm-margin-4x-bottom">
+  <div class="oj-flex-item oj-sm-12 oj-md-8">
+    <div style="padding: 20px 24px; border-radius: 12px; border: 1px solid var(--oj-core-divider-color); background-color: #f0f4fa;">
+      <div class="oj-flex oj-sm-align-items-center">
+        <div class="oj-flex-item">
+          <h3 class="oj-typography-heading-xs" style="margin: 0;">Run for Exclusion Criteria</h3>
+          <p class="oj-typography-body-sm" style="margin: 4px 0 0 0; color: #6b7280;">Select specific expenditure items to include in the backup</p>
+        </div>
+        <div class="oj-flex-item oj-sm-flex-initial">
+          <oj-button label="Select Expenditure Items" chroming="callToAction" on-click="[[$listeners.buttonClick]]"
+            id="btnOpenReport">
+          </oj-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== OPTION 2: RUN INVOICE BACKUP SOLUTION ========== -->
+<div class="oj-flex oj-sm-justify-content-center oj-sm-margin-4x-bottom">
+  <div class="oj-flex-item oj-sm-12 oj-md-8">
+    <div style="padding: 20px 24px; border-radius: 12px; border: 1px solid var(--oj-core-divider-color); background-color: #f0f4fa;">
+      <h3 class="oj-typography-heading-xs" style="margin: 0 0 4px 0;">Run Invoice Backup Solution</h3>
+      <p class="oj-typography-body-sm" style="margin: 0 0 16px 0; color: #6b7280;">Run backup by contract or AR invoice number</p>
+      <div class="oj-flex oj-sm-align-items-flex-end" style="gap: 16px;">
+        <div class="oj-flex-item oj-sm-12 oj-md-4">
+          <oj-select-single label-hint="Contract Invoice Number" data="[[ $variables.lovContractInvoices ]]"
+  item-text="ppm_invoice_number" value="{{ $variables.ppmInvoicenumber }}"></oj-select-single>
+
+        </div>
+        <div class="oj-flex-item oj-sm-12 oj-md-4">
+         <oj-select-single label-hint="AR Invoice Number" data="[[ $variables.lovArInvoices ]]"
+  item-text="ar_invoice_number" value="{{ $variables.AR_Invoice_Number }}"></oj-select-single>
+        </div>
+        <div class="oj-flex-item oj-sm-12 oj-md-2"></div>
+        <div class="oj-flex-item oj-sm-12 oj-md-1">
+         <oj-button label="Submit" chroming="callToAction" on-click="[[$listeners.submitInvoiceBackup]]"></oj-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ========== LOADING DIALOG ========== -->
+<oj-dialog id="loadingDialog" dialog-title="" modality="modal" cancel-behavior="none"
+  style="width:360px; border-radius:12px; overflow:hidden;">
+  <div slot="body" style="text-align:center; padding:40px 24px;">
+    <div style="margin-bottom:20px;">
+      <div style="width:48px; height:48px; border:4px solid #e0e0e0; border-top:4px solid #007bff; border-radius:50%; animation:spin 1s linear infinite; display:inline-block;"></div>
+    </div>
+    <h3 style="margin:0 0 8px 0; color:#1a1a1a; font-size:16px;">Processing...</h3>
+    <p style="margin:0; color:#666; font-size:13px;">Your backup request is being submitted.<br>Please wait, do not close this window.</p>
+  </div>
+</oj-dialog>
+
+<!-- ========== SUCCESS DIALOG (shared for both submit buttons) ========== -->
+<oj-dialog id="backupSuccessDialog" modality="modal" cancel-behavior="none"
+  style="width:340px; border-radius:10px; overflow:hidden;">
+  <div slot="body" style="text-align:center; padding:16px 16px 8px;">
+    <div style="width:40px; height:40px; border-radius:50%; background:#d4edda; display:inline-flex; align-items:center; justify-content:center; margin-bottom:8px;">
+      <span style="font-size:20px; color:#28a745;">✓</span>
+    </div>
+    <h3 style="margin:0 0 6px 0; color:#1a1a1a; font-size:15px;">Request Submitted</h3>
+    <p style="margin:0 0 6px 0; color:#555; font-size:12px; line-height:1.4;">
+      You will receive the results via email once complete.
+    </p>
+    <div style="background:#f0f4fa; border-radius:6px; padding:6px 10px; display:inline-block;">
+      <span style="font-size:11px; color:#333;">
+        <strong>Email:</strong>
+        <span style="color:#007bff;"><oj-bind-text value="[[ $flow.variables.email ]]"></oj-bind-text></span>
+      </span>
+    </div>
+  </div>
+  <div slot="footer" style="text-align:center; padding:0 16px 12px;">
+    <oj-button label="OK" chroming="callToAction"
+      on-click="[[$listeners.closeBackupSuccessDialog]]" style="min-width:80px;"></oj-button>
+  </div>
+</oj-dialog>
+
+<!-- ========== CSS for spinner animation ========== -->
+<style>
+  #backupSuccessDialog .oj-dialog-header { display:none !important; }
+  #backupSuccessDialog .oj-dialog-body { padding:15px 0 0 0 !important; }
+  #submitSuccessDialog .oj-dialog-header { display:none !important; }
+  #submitSuccessDialog .oj-dialog-body { padding:15px 0 0 0 !important; }
+</style>
+<style>
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>

@@ -1,0 +1,364 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ORDS",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/ORDS"
+        }
+    ],
+    "paths": {
+        "/ords/convertrite/convertrite/exp-selections": {
+            "get": {
+                "operationId": "getOrdsConvertriteContractSelectionsContractSelection",
+                "parameters": [
+                    {
+                        "name": "project_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetOrdsConvertriteConvertriteExp-selections"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getOrdsConvertriteContractSelectionsContractSelection/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            },
+            "delete": {
+                "operationId": "deleteOrdsConvertriteContractSelectionsContractSelection",
+                "parameters": [
+                    {
+                        "name": "project_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ords/convertrite/convertrite/exp-selections/batch": {
+            "post": {
+                "operationId": "postOrdsConvertriteContractSelectionsBatch",
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                }
+            }
+        },
+        "/ords/convertrite/convertrite/backup-history": {
+            "get": {
+                "operationId": "getOrdsConvertriteConvertriteBackupHistory",
+                "parameters": [
+                    {
+                        "name": "project_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetOrdsConvertriteConvertriteBackup-history"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getOrdsConvertriteConvertriteBackupHistory/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetOrdsConvertriteConvertriteExp-selections": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "sel_id": {
+                                    "type": "integer"
+                                },
+                                "project_id": {
+                                    "type": "integer"
+                                },
+                                "expenditure_item_id": {
+                                    "type": "integer"
+                                },
+                                "project_number": {
+                                    "type": "string"
+                                },
+                                "project_name": {
+                                    "type": "string"
+                                },
+                                "contract_number": {
+                                    "type": "string"
+                                },
+                                "contract_line_num": {
+                                    "type": "string"
+                                },
+                                "line_amount": {
+                                    "type": "integer"
+                                },
+                                "invoiced_amount": {
+                                    "type": "integer"
+                                },
+                                "attribute_number5": {
+                                    "nullable": true
+                                },
+                                "ap_invoice_number": {
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "type": "string"
+                                },
+                                "expenditure_item_date": {
+                                    "type": "string"
+                                },
+                                "expenditure_type_id": {
+                                    "type": "integer"
+                                },
+                                "bill_type_class_code": {
+                                    "type": "string"
+                                },
+                                "billable_flag": {
+                                    "type": "string"
+                                },
+                                "user_transaction_source": {
+                                    "type": "string"
+                                },
+                                "id_at_cntr_table": {
+                                    "type": "integer"
+                                },
+                                "expenditure_type_name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "rec_id": {
+                                    "type": "integer"
+                                },
+                                "line_id": {
+                                    "type": "integer"
+                                },
+                                "line_puid": {
+                                    "type": "string"
+                                },
+                                "ap_invoice_id": {
+                                    "type": "integer"
+                                },
+                                "task_id": {
+                                    "type": "integer"
+                                },
+                                "quantity": {
+                                    "type": "integer"
+                                },
+                                "projfunc_raw_cost": {
+                                    "type": "integer"
+                                },
+                                "raw_cost_rate": {
+                                    "type": "integer"
+                                },
+                                "projfunc_burdened_cost": {
+                                    "type": "integer"
+                                },
+                                "burden_cost_rate": {
+                                    "type": "integer"
+                                },
+                                "invoiced_flag": {
+                                    "type": "string"
+                                },
+                                "org_id": {
+                                    "type": "integer"
+                                },
+                                "project_unit_id": {
+                                    "type": "integer"
+                                },
+                                "project_raw_cost": {
+                                    "type": "integer"
+                                },
+                                "unit_of_measure": {
+                                    "type": "string"
+                                },
+                                "expenditure_organization_id": {
+                                    "type": "integer"
+                                },
+                                "project_burdened_cost": {
+                                    "type": "integer"
+                                },
+                                "created_date": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetOrdsConvertriteConvertriteBackup-history": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "history_id": {
+                                    "type": "integer"
+                                },
+                                "project_id": {
+                                    "type": "integer"
+                                },
+                                "project_number": {
+                                    "type": "string"
+                                },
+                                "project_name": {
+                                    "type": "string"
+                                },
+                                "version": {
+                                    "type": "integer"
+                                },
+                                "exp_source": {
+                                    "nullable": true
+                                },
+                                "exp_type": {
+                                    "nullable": true
+                                },
+                                "exp_from_date": {
+                                    "nullable": true
+                                },
+                                "exp_to_date": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "nullable": true
+                                },
+                                "ucm_document_id": {
+                                    "type": "string"
+                                },
+                                "ucm_did": {
+                                    "type": "string"
+                                },
+                                "total_files": {
+                                    "type": "integer"
+                                },
+                                "backup_size_mb": {
+                                    "type": "number"
+                                },
+                                "duration_seconds": {
+                                    "type": "number"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "error_message": {
+                                    "nullable": true
+                                },
+                                "created_date": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

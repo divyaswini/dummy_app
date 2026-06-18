@@ -1,0 +1,20 @@
+{
+    "Projects": [
+        {
+            "EXPENDITURE_TYPE_NAME": "Material",
+            "EXPENDITURE_TYPE_ID": "300000047429509"
+        },
+        {
+            "EXPENDITURE_TYPE_NAME": "Hardware",
+            "EXPENDITURE_TYPE_ID": "300000047429486"
+        },
+        {
+            "EXPENDITURE_TYPE_NAME": "Contract Services",
+            "EXPENDITURE_TYPE_ID": "300000047429469"
+        },
+        {
+            "EXPENDITURE_TYPE_NAME": "Administrative",
+            "EXPENDITURE_TYPE_ID": "300000047429450"
+        }
+    ]
+}

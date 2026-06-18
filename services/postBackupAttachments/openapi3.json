@@ -1,0 +1,23 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "129.213.71.15",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/exclusion_criteria"
+        }
+    ],
+    "paths": {
+        "/backup_attachments": {
+            "post": {
+                "operationId": "postBackup_attachments",
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    }
+}
