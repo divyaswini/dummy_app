@@ -1,0 +1,20 @@
+{
+  "title": "dummy_page",
+  "description": "",
+  "variables": {},
+  "metadata": {},
+  "types": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "vbEnterListener"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {}
+  }
+}
